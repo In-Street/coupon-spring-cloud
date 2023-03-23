@@ -1,0 +1,4 @@
+###
+GET {{url}}/couponTemplate/getTemplate?id=1
+Accept: */*
+Cache-Control: no-cache

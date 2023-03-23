@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.cloud</groupId>
-        <artifactId>coupon-spring-cloud</artifactId>
+        <artifactId>coupon-template</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>template-service</artifactId>
@@ -18,4 +17,65 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.cloud</groupId>
+            <artifactId>template-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.cloud</groupId>
+            <artifactId>template-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 如果要以java -jar命令执行这个应用，记得把这个注解打开
+         如果这个项目是作为其它项目的依赖，那么就不要添加下面这个注解。
+
+         在Spring Boot阶段，由于我们是通过customer服务来跑单体应用，所以不用加
+         在Spring Cloud阶段，以java -jar 运行项目必须在各个impl项目的pom中加上这个注解
+    -->
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                    <configuration>
+                        <mainClass>cn.cloud.template.service.TemplateServiceApplication</mainClass>
+                        <layout>ZIP</layout>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+            <resources>
+                <resource>
+                    <directory>src/main/resources</directory>
+                    <filtering>false</filtering>
+                    <includes>
+                        <include>*.yml</include>
+                        <include>*.txt</include>
+                        <include>*.xml</include>
+                        <include>*.pem</include>
+                        <include>*.properties</include>
+                    </includes>
+                </resource>
+            </resources>
+        </build>
 </project>

@@ -1,34 +1,33 @@
 package cn.cloud.template.api.beans;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  *
  * @author Cheng Yufei
- * @create 2023-03-22 23:29
+ * @create 2023-03-23 15:57
  **/
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CouponInfo {
+@Builder
+public class TemplateSearchParams {
 
     private Long id;
 
-    private Long templateId;
+    private String name;
 
-    /**
-     * 领券用户id
-     */
-    private Long userId;
+    private String type;
 
-    /**
-     * 使用门店ID
-     */
     private Long shopId;
 
-    private Integer status;
+    private Boolean available;
 
-    private CouponTemplateInfo template;
+    private int page;
+
+    private int pageSize;
 }
