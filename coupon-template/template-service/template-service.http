@@ -2,3 +2,20 @@
 GET {{url}}/couponTemplate/getTemplate?id=1
 Accept: */*
 Cache-Control: no-cache
+
+###
+###
+GET {{url}}/couponTemplate/getBatch?ids=1,2
+Accept: */*
+Cache-Control: no-cache
+
+###
+###
+GET {{url}}/couponTemplate/t1
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET {{url}}/couponTemplate/t2
+Accept: */*
+Cache-Control: no-cache

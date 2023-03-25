@@ -5,18 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.cloud</groupId>
-        <artifactId>coupon-spring-cloud</artifactId>
+        <artifactId>coupon-customer</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>coupon-customer</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>customer-api</module>
-        <module>customer-dao</module>
-        <module>customer-service</module>
-    </modules>
+    <artifactId>customer-dao</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -25,16 +18,25 @@
     </properties>
 
     <dependencies>
+
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>cn.cloud</groupId>
+            <artifactId>customer-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring.boot.version}</version>
         </dependency>
 
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.21</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -1,0 +1,4 @@
+### 查询优惠券模版
+GET {{url}}/couponCustomer/getTemplate?id=3
+Accept: */*
+Cache-Control: no-cache

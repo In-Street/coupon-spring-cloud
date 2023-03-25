@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @create 2023-03-23 15:01
  **/
 @SpringBootApplication(scanBasePackages = "cn.cloud.template")
-//@EnableJpaAuditing
+@EnableJpaAuditing
 @EnableJpaRepositories(basePackages = "cn.cloud.template.dao")
 @EntityScan(basePackages = "cn.cloud.template.dao.entity")
 public class TemplateServiceApplication {

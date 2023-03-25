@@ -1,17 +1,40 @@
 server:
-  port: 20002
-  # 在返回给页面的结果里，把错误信息添加到message里
+  port: 20000
   error:
     include-message: always
 spring:
   application:
-    name: coupon-calculation-service
+    name: coupon-template-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/coupon?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password:
+    hikari:
+      pool-name:  couponTemplateHikari
+      connection-timeout: 5000
+      idle-timeout: 3000
+      minimum-idle: 5
+      maximum-pool-size: 10
+      max-lifetime: 60000
+      auto-commit: true
+  jpa:
+    show-sql: true
+    # 在生产环境全部为none，防止ddl结构被自动执行
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    open-in-view: false
+
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 127.0.0.1:8948
         # 服务注册到nacos的名称
-        service: coupon-calculation-service
+        service: coupon-template-service
         #客户端向服务端发送心跳的时间间隔，单位ms
         heart-beat-interval: 5000
         #服务端没有接受到客户端心跳请求就将其设为不健康的时间间隔，默认为15s
@@ -34,3 +57,10 @@ spring:
         register-enabled: true
         username: nacos
         password: nacos
+
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+        #Sentinel Web filter 默认收敛所有 URL 的入口 context，因此链路限流不生效。设置为false，可根据不同的 URL 进行链路限流
+      web-context-unify: false

@@ -3,8 +3,10 @@ package cn.cloud.template.service.service;
 import cn.cloud.template.api.beans.CouponTemplateInfo;
 import cn.cloud.template.api.beans.PagedCouponTemplateInfo;
 import cn.cloud.template.api.beans.TemplateSearchParams;
+import cn.cloud.template.dao.entity.CouponTemplate;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,4 +52,6 @@ public interface CouponTemplateService {
      * @return
      */
     Map<Long, CouponTemplateInfo> getTemplateInfoMap(Collection<Long> ids);
+
+    List<CouponTemplate> findAllById(Collection<Long> ids);
 }

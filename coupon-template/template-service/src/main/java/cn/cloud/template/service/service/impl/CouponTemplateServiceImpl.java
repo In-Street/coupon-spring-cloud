@@ -8,6 +8,8 @@ import cn.cloud.template.dao.CouponTemplateDao;
 import cn.cloud.template.dao.entity.CouponTemplate;
 import cn.cloud.template.service.converter.CouponTemplateConverter;
 import cn.cloud.template.service.service.CouponTemplateService;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,8 +133,10 @@ public class CouponTemplateServiceImpl implements CouponTemplateService {
      */
     @Override
     public CouponTemplateInfo loadTemplateInfo(Long id) {
-        Optional<CouponTemplate> template = templateDao.findById(id);
-        return template.isPresent() ? CouponTemplateConverter.convertToTemplateInfo(template.get()) : null;
+       /* Optional<CouponTemplate> template = templateDao.findById(id);
+        return template.isPresent() ? CouponTemplateConverter.convertToTemplateInfo(template.get()) : null;*/
+        List<CouponTemplate> templates = findAllById(Lists.newArrayList(id));
+        return CouponTemplateConverter.convertToTemplateInfo(templates.get(0));
     }
 
     // 将券无效化
@@ -151,10 +155,15 @@ public class CouponTemplateServiceImpl implements CouponTemplateService {
     @Override
     public Map<Long, CouponTemplateInfo> getTemplateInfoMap(Collection<Long> ids) {
 
-        List<CouponTemplate> templates = templateDao.findAllById(ids);
-
+        List<CouponTemplate> templates = findAllById(ids);
         return templates.stream()
                 .map(CouponTemplateConverter::convertToTemplateInfo)
                 .collect(Collectors.toMap(CouponTemplateInfo::getId, Function.identity()));
+    }
+
+    @SentinelResource("findAllById")
+    public List<CouponTemplate> findAllById(Collection<Long> ids) {
+        List<CouponTemplate> templates = templateDao.findAllById(ids);
+        return templates;
     }
 }
