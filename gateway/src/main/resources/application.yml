@@ -1,0 +1,46 @@
+server:
+  port: 30000
+
+spring:
+  application:
+    name: coupon-gateway
+
+  redis:
+    host: localhost
+    port: 6383
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: dev
+        group: Mckenna-Group
+        register-enabled: false
+        username: nacos
+        password: nacos
+        naming-load-cache-at-start: false
+
+    gateway:
+      discovery:
+        locator:
+          #创建默认路由，服务名/接口地址  格式进行转发
+          enabled: true
+          # nacos服务名本来就是小写，eureka默认大写
+          lower-case-service-id: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            # 授信地址列表
+            allowed-origins:
+              - "http://localhost:10000"
+              - "https://www.geekbang.com"
+            # cookie, authorization认证信息
+            exposed-headers: "*"
+            allowed-methods: "*"
+            #跨域请求默认不带cookie，设置true则包含cookie
+            allow-credentials: true
+            allowed-headers: "*"
+          # 浏览器缓存时间
+            max-age: 1000
+
+

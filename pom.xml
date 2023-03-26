@@ -12,6 +12,7 @@
         <module>coupon-template</module>
         <module>coupon-calculation</module>
         <module>coupon-customer</module>
+        <module>gateway</module>
     </modules>
 
     <properties>

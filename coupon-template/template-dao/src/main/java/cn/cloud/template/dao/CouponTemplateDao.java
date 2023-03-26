@@ -1,7 +1,6 @@
 package cn.cloud.template.dao;
 
 import cn.cloud.template.dao.entity.CouponTemplate;
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

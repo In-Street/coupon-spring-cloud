@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *  sentinel: 链路流控，获取请求来源
+ *  sentinel: 流控，获取请求来源，限流某一服务对当前服务的请求
  * @author Cheng Yufei
  * @create 2023-03-25 17:04
  **/
