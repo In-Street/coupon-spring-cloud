@@ -15,6 +15,7 @@ spring:
         server-addr: localhost:8848
         namespace: dev
         group: Mckenna-Group
+        cluster-name: Cluster-A
         register-enabled: false
         username: nacos
         password: nacos
@@ -42,5 +43,4 @@ spring:
             allowed-headers: "*"
           # 浏览器缓存时间
             max-age: 1000
-
 

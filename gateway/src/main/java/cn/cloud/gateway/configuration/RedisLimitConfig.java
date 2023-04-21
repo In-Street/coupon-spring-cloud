@@ -5,6 +5,7 @@ import org.springframework.cloud.gateway.filter.ratelimit.RateLimiter;
 import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import reactor.core.publisher.Mono;
 
 /**
@@ -39,5 +40,10 @@ public class RedisLimitConfig {
         return new RedisRateLimiter(5, 10);
     }
 
+    @Bean(name="defaultRateLimiter")
+    @Primary
+    public RateLimiter defaultRateLimiter(){
+        return new RedisRateLimiter(50, 100);
+    }
 
 }

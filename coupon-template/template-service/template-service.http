@@ -19,3 +19,4 @@ Cache-Control: no-cache
 GET {{url}}/couponTemplate/t2
 Accept: */*
 Cache-Control: no-cache
+

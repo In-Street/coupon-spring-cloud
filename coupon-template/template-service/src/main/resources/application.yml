@@ -65,10 +65,27 @@ spring:
         #Sentinel Web filter 默认收敛所有 URL 的入口 context，因此链路限流不生效。设置为false，可根据不同的 URL 进行链路限流
       web-context-unify: false
 
-    sleuth:
-      sampler:
+#    sleuth:
+#      sampler:
         #采样率0～1，1表示对请求进行100%采样。小于1说明有的请求不会被采样
-        probability: 1
+#        probability: 1
         # 每秒对1000个request进行采样，请求超过此值，仍会被正常处理，但是调用链信息不会被采样
-        rate: 1000
+#        rate: 1000
 
+    alibaba:
+      seata:
+        tx-service-group: seata-server-group
+seata:
+  application-id: coupon-template-service
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      namespace: dev
+      group: Mckenna-Group
+      username: nacos
+      password: nacos
+  service:
+    vgroup-mapping:
+      seata-server-group: default

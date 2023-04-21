@@ -25,6 +25,8 @@ public class CouponCalculationController {
     @Autowired
     private ObjectMapper objectMapper;
 
+    private int a = 0;
+
     // 优惠券结算
     @PostMapping("/checkout")
     @ResponseBody
@@ -45,4 +47,5 @@ public class CouponCalculationController {
         log.info("do simulation: {}", objectMapper.writeValueAsString(simulator));
         return calculationService.simulateOrder(simulator);
     }
+
 }

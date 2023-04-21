@@ -2,3 +2,22 @@
 GET {{url}}/couponCustomer/getTemplate?id=3
 Accept: */*
 Cache-Control: no-cache
+
+
+###
+###
+GET localhost:20002/test/t2
+Accept: */*
+Cache-Control: no-cache
+
+###
+###
+GET {{url}}/gateway/customer/getTemplate?id=3
+Accept: */*
+Cache-Control: no-cache
+
+###
+###
+GET {{url}}/gateway/couponTemplate/getTemplate?id=3
+Accept: */*
+Cache-Control: no-cache
