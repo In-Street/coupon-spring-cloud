@@ -36,7 +36,8 @@ public class RouteConfig {
                         .filters(f -> f.stripPrefix(1)
                                 .rewritePath("/customer/(?<repl>.*)","/couponCustomer/$\\{repl}")
                                 .addRequestHeader("gw","gateway")
-                                .requestRateLimiter(limiter->limiter.setKeyResolver(keyResolver).setRateLimiter(rateLimiter).setStatusCode(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED)))
+                                .requestRateLimiter(limiter->limiter.setKeyResolver(keyResolver).setRateLimiter(rateLimiter).setStatusCode(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED))
+                        )
                         .uri("lb://coupon-customer-service"))
                 .route(r -> r
                         .path("/gateway/couponTemplate/**")

@@ -32,7 +32,7 @@ public class RedisLimitConfig {
     @Bean(name="customerRateLimiter")
     public RateLimiter customerRateLimiter(){
         //每秒发放5个令牌，令牌痛容量10
-        return new RedisRateLimiter(5, 20);
+        return new RedisRateLimiter(1, 3);
     }
 
     @Bean(name="templateRateLimiter")

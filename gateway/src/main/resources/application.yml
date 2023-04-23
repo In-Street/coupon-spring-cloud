@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: coupon-gateway
+  profiles:
+    active: dev
 
   redis:
     host: localhost
@@ -43,4 +45,8 @@ spring:
             allowed-headers: "*"
           # 浏览器缓存时间
             max-age: 1000
-
+      httpclient:
+        connect-timeout: 2
+    loadbalancer:
+      cache:
+        ttl: 3

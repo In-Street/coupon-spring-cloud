@@ -1,0 +1,20 @@
+###
+GET {{url}}/test/t1
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET {{url}}/gateway/customer/getTemplate?id=3
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET {{url}}/gateway/couponTemplate/getTemplate?id=3
+Accept: */*
+Cache-Control: no-cache
+
+###
+POST {{url}}/couponTemplate/addTemplate
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json

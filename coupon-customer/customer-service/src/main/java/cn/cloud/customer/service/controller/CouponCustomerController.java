@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  *
  * @author Cheng Yufei
@@ -30,8 +32,9 @@ public class CouponCustomerController {
 
     @GetMapping("/getTemplate")
     @SentinelResource(value = "customer-service:getTemplate")
-    public CouponTemplateInfo getTemplate(@RequestParam("id") Long id) {
+    public CouponTemplateInfo getTemplate(@RequestParam("id") Long id, HttpServletRequest request) {
         log.info("读取配置：{}", disableCouponRequest);
+        log.info("读取header：{}", request.getHeader("gw"));
         return couponCustomerService.getTemplate(id);
     }
 }
